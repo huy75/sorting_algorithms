@@ -2,88 +2,37 @@
 #include <stdbool.h>
 
 /**
- * swapp - Swaps specified array elements then prints array
- * @array: Array to swap elements
- * @size: Size of array
- * @i: First index to swap
- * @j: Second index to swap
- */
-
-/**
-void swap(int *array, size_t size, int i, int j)
-{
-	int tmp;
-
-	tmp = array[j];
-	array[j] = array[i];
-	array[i] = tmp;
-
-	print_array(array, size);
-}
-
-*/
-
-/**
  * bubble_sort - sorts an array using bubble sort
  * @array: array of ints
  * @size: number of elements in array
  * Return: void
  */
-/* Output seems ok*/
 
 void bubble_sort(int *array, size_t size)
 {
-	size_t i, j;
+	size_t i, iterate = size;
 	int tmp;
+	bool swapped = false;
 
-	if (array && size > 1 )
-	{
-		for (i = 0; i < size; i++)
-		{
-			/* size - 1 to avoid largest elemnt in the final place */
-			/* so that no need to double check */
-			for (j = 0; j < size - 1; j++)
-			{
-				if (array[j] > array[j + 1])
-				{
-					tmp = array[j];
-					array[j] = array[j + 1];
-					array[j + 1] = tmp;
-					print_array(array, size);
-				}
-			}
-		}
-	}
-	else
+	if (!array || size == 0)
 		return;
 
-}
-
-
-
-/*First version of the code
- * output? needs improvement
- */
-
-/**
-
-void bubble_sort(int *array, size_t size)
-{
-	size_t i;
-
-	while (array)
+	while (swapped == false)
 	{
-		for (i = 0; i < size -1; i++)
+		swapped = true;
+		/* printf("Swap? %s\n", swapped ? "true" : "false"); */
+		for (i = 0; i < iterate - 1; i++) /* largest element at the end */
 		{
 			if (array[i] > array[i + 1])
 			{
-				swap(array, size, i, i + 1);
+				tmp = array[i];
+				array[i] = array[i + 1];
+				array[i + 1] = tmp;
+		/*printf("After swapping %d and %d\n", array[i], array[i + 1]);*/
 				print_array(array, size);
 			}
+			swapped = false;
 		}
+		iterate--;
 	}
-	return;
 }
-
-
-*/
