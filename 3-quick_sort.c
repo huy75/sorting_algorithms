@@ -42,17 +42,14 @@ int partition(int *array, int lo, int hi, size_t size)
 
 	for (j = lo; j < hi; j++)
 	{
-		printf("pivot: %d j: %d\n", pivot, array[j]);
 		if (array[j] < pivot)
 		{
 			i++;
 			swap(array, size, i, j);
-			printf("swapin - pivot: %d j: %d\n", pivot, array[j]);
 		}
 	}
 	++i;
 	swap(array, size, i, hi);
-	printf("swap out pivot: %d j: %d\n", pivot, array[j]);
 	return (i);
 }
 
