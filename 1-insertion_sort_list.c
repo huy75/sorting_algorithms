@@ -2,8 +2,8 @@
 
 /**
  * swap_list - Swaps linked list nodes then prints list
- * @n1: First node
- * @n2: Second node
+ * @a: First node
+ * @b: Second node
  */
 void swap_list(listint_t *a, listint_t *b)
 {
@@ -34,15 +34,11 @@ void insertion_sort_list(listint_t **list)
 		pivot = pivot->next;
 		while (cur && cur->prev)
 		{
-			printf("before prev = %d, cur = %d\n", cur->prev->n, cur->n);
-
 			if (cur->prev->n > cur->n)
 			{
 				swap_list(cur->prev, cur);
 				if (!cur->prev)
 					*list = cur;
-				else
-					printf("after prev = %d, cur = %d\n", cur->prev->n, cur->n);
 				print_list((listint_t *)*list);
 			}
 			else
