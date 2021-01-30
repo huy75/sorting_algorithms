@@ -65,6 +65,7 @@ int partition(int *array, int lo, int hi, size_t size)
  */
 void quicksort(int *array, int lo, int hi, size_t size)
 {
+
 	int p;
 
 	if (lo < hi)
@@ -72,6 +73,7 @@ void quicksort(int *array, int lo, int hi, size_t size)
 		p = partition(array, lo, hi, size);
 		quicksort(array, lo, p - 1, size);
 		quicksort(array, p + 1, hi, size);
+
 	}
 }
 
@@ -84,7 +86,8 @@ void quicksort(int *array, int lo, int hi, size_t size)
  */
 void quick_sort(int *array, size_t size)
 {
-	if (!array || !size)
+	if (!array || size < 2)
 		return;
+
 	quicksort(array, 0, size - 1, size);
 }
