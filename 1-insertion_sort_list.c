@@ -26,6 +26,9 @@ void insertion_sort_list(listint_t **list)
 {
 	listint_t *pivot, *cur;
 
+	if (!list || !*list || !(*list)->next)
+		return;
+
 	pivot = (*list)->next;
 
 	while (pivot)

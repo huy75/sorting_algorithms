@@ -20,7 +20,7 @@ void shell_sort(int *array, size_t size)
 		gap = gap * 3 + 1;
 
 	/* Start with a big gap, then reduce the gap */
-	for (; gap; gap /= 3)
+	for (; gap; gap = (gap - 1) / 3)
 	{
 		/**
 		 * Do a gapped insertion sort for this gap size.
@@ -28,7 +28,7 @@ void shell_sort(int *array, size_t size)
 		 * keep adding one more element until the entire array is
 		 * gap sorted
 		 */
-		for (i = gap; i < size; i += 1)
+		for (i = gap; i < size; i++)
 		{
 			/**
 			 * add a[i] to the elements that have been gap sorted
