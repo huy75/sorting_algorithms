@@ -41,13 +41,13 @@ void counting_sort(int *array, size_t size)
 	if (!count)
 		return;
 	/* initialize all elements of count array to 0 */
-	for (i = 0; i <= k + 1; i++)
+	for (i = 0; i <= k; i++)
 		count[i] = 0;
 	/* count of each element stored */
 	for (i = 0; i < size; i++)
 		count[array[i]]++;
 	/* store the cumulative sum of the counts */
-	for (i = 0; i < k + 1; i++)
+	for (i = 0; i < k; i++)
 		count[i + 1] += count[i];
 	print_array(count, k + 1);
 	/* create an array for the sorted output */
