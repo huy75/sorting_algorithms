@@ -28,7 +28,6 @@ void cocktail_sort_list(listint_t **list)
 
 	if (!list || !*list || !(*list)->next)
 		return;
-
 	p = *list;
 	while (swapped)
 	{
@@ -46,13 +45,10 @@ void cocktail_sort_list(listint_t **list)
 			else
 				p = p->next;
 		}
-
 		if (!swapped)
 			break;
-
 		swapped = 0;
 		p = p->prev;
-
 		while (p->prev)
 		{
 			if (p->n < p->prev->n)
@@ -66,6 +62,5 @@ void cocktail_sort_list(listint_t **list)
 			else
 				p = p->prev;
 		}
-
 	}
 }
