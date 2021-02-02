@@ -29,5 +29,9 @@ void cocktail_sort_list(listint_t **list);
 void counting_sort(int *array, size_t size);
 void heap_sort(int *array, size_t size);
 void quick_sort_hoare(int *array, size_t size);
+int get_max(int *array, int size);
+void radix_sort(int *array, size_t size);
+
+
 
 #endif /* SORT_H */
