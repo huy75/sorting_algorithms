@@ -1,26 +1,20 @@
 #include "sort.h"
 
 /**
- * swap_list - Swaps linked list node with the following node
- * @list: list
- * @a: pointer to node a
- * @b: pointer to node b
+ * swap_node - swap nodes on a linked list
+ * @n1 : num 1
+ * @n2: num 2
  */
-void swap_next(listint_t **list, listint_t *a, listint_t *b)
+void swap_node(listint_t *n1, listint_t *n2)
 {
-	
-	if (b->next)
-		a->next = b->next;
-	else
-		a->next = NULL;
-
-	if (a->prev)
-		b->prev = a->prev;
-	else
-		(*list) = b;
-
-	a->prev = b;
-	b->next = a;
+	if (n1->prev)
+		n1->prev->next = n2;
+	if (n2->next)
+		n2->next->prev = n1;
+	n1->next = n2->next;
+	n2->prev = n1->prev;
+	n1->prev = n2;
+	n2->next = n1;
 }
 
 /**
@@ -29,7 +23,7 @@ void swap_next(listint_t **list, listint_t *a, listint_t *b)
  */
 void cocktail_sort_list(listint_t **list)
 {
-	listint_t *p, *q;
+	listint_t *p;
 	int swapped = 1;
 
 	if (!list || !*list || !(*list)->next)
@@ -44,8 +38,9 @@ void cocktail_sort_list(listint_t **list)
 			if (p->n > p->next->n)
 			{
 				swapped = 1;
-				q = &p->next;
-				swap_next(list, &p, &q);
+				swap_node(p, p->next);
+				if (!p->prev->prev)
+					*list = p->prev;
 				print_list(*list);
 			}
 			else
@@ -63,8 +58,9 @@ void cocktail_sort_list(listint_t **list)
 			if (p->n < p->prev->n)
 			{
 				swapped = 1;
-				q = &p->next;
-				swap_next(list, &p, &q);
+				swap_node(p->prev, p);
+				if (!p->prev)
+					*list = p;
 				print_list(*list);
 			}
 			else
