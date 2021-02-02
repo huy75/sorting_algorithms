@@ -41,16 +41,16 @@ void radix_sort(int *array, size_t size)
 		for (i = 0; i < 10; i++)
 			bucket[i] = 0;
 		/* Count the elements */
-		for (i = 0; i <= size; i++)
+		for (i = 0; i < size; i++)
 			bucket[(array[i] / digit) % 10]++;
 		/* Calculate the cumulative sum of counts */
 		for (i = 1; i < size; i++)
 			bucket[i] += bucket[i - 1];
 		/* Place the elements in a sorted order */
-		for (i = size - 1; i <= size; i--)
+		for (i = size - 1; i < size; i--)
 			output[--bucket[(array[i] / digit) % 10]] = array[i];
 		/* copy the output */
-		for (i = 0; i <= size; i++)
+		for (i = 0; i < size; i++)
 			array[i] = output[i];
 		print_array(array, size);
 
