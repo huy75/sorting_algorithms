@@ -34,26 +34,26 @@ void radix_sort(int *array, size_t size)
 	int output[size];
 	int digit = 1;
 	int max_element = get_max(array, size);
+	int bucket[10];
 
 	while (max_element / digit > 0)
-{
-
-		int bucket[10] = {0};
+	{
+		for (i = 0; i < 10; i++)
+			bucket[i] = 0;
 		/* Count the elements */
-		for (i = 0; i < size; i++)
+		for (i = 0; i <= size; i++)
 			bucket[(array[i] / digit) % 10]++;
 		/* Calculate the cumulative sum of counts */
-		for (i = 1; i < 10; i++)
+		for (i = 1; i < size; i++)
 			bucket[i] += bucket[i - 1];
 		/* Place the elements in a sorted order */
-		for (i = size - 1; i < size; i--)
+		for (i = size - 1; i <= size; i--)
 			output[--bucket[(array[i] / digit) % 10]] = array[i];
 		/* copy the output */
-		for (i = 0; i < size; i++)
+		for (i = 0; i <= size; i++)
 			array[i] = output[i];
 		print_array(array, size);
 
 		digit *= 10;
-
 	}
 }
