@@ -1,35 +1,24 @@
 #include "sort.h"
 
 /**
- * list_len - returns the number of elements in a list
- * @h: points to the head of list
- * Return: size_t
+ * swap_list - Swaps linked list node with the following node
+ * @list: list
+ * @a: pointer to node a
+ * @b: pointer to node b
  */
-size_t list_len(const listint_t *h)
+void swap_next(listint_t **list, listint_t *a, listint_t *b)
 {
-	size_t nodes = 0;
-
-	while (h)
-	{
-		nodes += 1;
-		h = h->next;
-	}
-	return (nodes);
-}
-
-/**
- * swap_list - Swaps linked list nodes then prints list
- * @a: First node
- * @b: Second node
- */
-void swap_list(listint_t *a, listint_t *b)
-{
-	if (a->prev)
-		a->prev->next = b;
+	
 	if (b->next)
-		b->next->prev = a;
-	a->next = b->next;
-	b->prev = a->prev;
+		a->next = b->next;
+	else
+		a->next = NULL;
+
+	if (a->prev)
+		b->prev = a->prev;
+	else
+		(*list) = b;
+
 	a->prev = b;
 	b->next = a;
 }
@@ -40,11 +29,12 @@ void swap_list(listint_t *a, listint_t *b)
  */
 void cocktail_sort_list(listint_t **list)
 {
-	listint_t *p;
+	listint_t *p, *q;
 	int swapped = 1;
 
-	if (!list || !*list || list_len(*list) < 2)
+	if (!list || !*list || !(*list)->next)
 		return;
+
 	p = *list;
 	while (swapped)
 	{
@@ -54,26 +44,32 @@ void cocktail_sort_list(listint_t **list)
 			if (p->n > p->next->n)
 			{
 				swapped = 1;
-				swap_list(p, p->next);
+				q = &p->next;
+				swap_next(list, &p, &q);
 				print_list(*list);
 			}
 			else
 				p = p->next;
 		}
+
 		if (!swapped)
 			break;
+
+		swapped = 0;
 		p = p->prev;
+
 		while (p->prev)
 		{
 			if (p->n < p->prev->n)
 			{
 				swapped = 1;
-				p = p->prev;
-				swap_list(p->next, p);
+				q = &p->next;
+				swap_next(list, &p, &q);
 				print_list(*list);
 			}
 			else
 				p = p->prev;
 		}
+
 	}
 }
