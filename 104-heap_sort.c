@@ -1,6 +1,23 @@
 #include "sort.h"
 
 /**
+ * swap_elem - swap value of array elements
+ * @array: array (for print)
+ * @size: size of array (for print)
+ * @a: pointer to array element
+ * @b: pointer to array element
+ */
+void swap_elem(int *array, size_t size, int *a, int *b)
+{
+	int temp;
+
+	temp = *a;
+	*a = *b;
+	*b = temp;
+	print_array(array, size);
+}
+
+/**
  * sift_down - Builds heap form bottom up
  * @array: List to be sorted
  * @start: Root ot the heap
@@ -67,23 +84,6 @@ void heapify(int *array, size_t size)
 		sift_down(array, start, size - 1, size);
 		start--;
 	}
-}
-
-/**
- * swap_elem - swap value of array elements
- * @array: array (for print)
- * @size: size of array (for print)
- * @a: pointer to array element
- * @b: pointer to array element
- */
-void swap_elem(int *array, size_t size, int *a, int *b)
-{
-	int temp;
-
-	temp = *a;
-	*a = *b;
-	*b = temp;
-	print_array(array, size);
 }
 
 /**
