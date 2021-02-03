@@ -31,7 +31,7 @@ void radix_sort(int *array, size_t size)
 {
 
 	size_t i;
-	int output[size];
+	int output[10];
 	int digit = 1;
 	int max_element = get_max(array, size);
 	int bucket[10];
