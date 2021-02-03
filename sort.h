@@ -34,6 +34,7 @@ int get_max(int *array, int size);
 void top_down(int *array, size_t top, size_t down, int *tmp);
 void merge_sort(int *array, size_t size);
 void merge(int *array, size_t left, size_t right, int *tmp);
+void radix_sort(int *array, size_t size);
 
 
 
