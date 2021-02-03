@@ -32,8 +32,8 @@ void heap_sort(int *array, size_t size);
 void quick_sort_hoare(int *array, size_t size);
 int get_max(int *array, int size);
 void top_down(int *array, size_t top, size_t down, int *tmp);
-void merge_sort(int * array, size_t size);
-void merge(int * array, size_t left, size_t right, int *tmp);
+void merge_sort(int *array, size_t size);
+void merge(int *array, size_t left, size_t right, int *tmp);
 
 
 
