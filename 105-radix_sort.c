@@ -29,7 +29,6 @@ int get_max(int *array, int size)
 
 void radix_sort(int *array, size_t size)
 {
-
 	size_t i;
 	int *output, *bucket;
 	int digit = 1;
@@ -37,7 +36,6 @@ void radix_sort(int *array, size_t size)
 
 	if (!array || size < 2)
 		return;
-
 	bucket = malloc(sizeof(int) * 11);
 	if (!bucket)
 		return;
@@ -67,7 +65,6 @@ void radix_sort(int *array, size_t size)
 		for (i = 0; i < size; i++)
 			array[i] = output[i];
 		print_array(array, size);
-
 		digit *= 10;
 	}
 	free(bucket);
