@@ -32,10 +32,11 @@ void radix_sort(int *array, size_t size)
 	size_t i;
 	int *output, *bucket;
 	int digit = 1;
-	int max_element = get_max(array, size);
+	int max_element;
 
-	if (!array || size < 2)
+	if (array == NULL || size < 2)
 		return;
+	max_element = get_max(array, size);
 	bucket = malloc(sizeof(int) * size);
 	if (!bucket)
 		return;
