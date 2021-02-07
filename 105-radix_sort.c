@@ -29,43 +29,42 @@ int get_max(int *array, int size)
 
 void radix_sort(int *array, size_t size)
 {
-	size_t i;
-	int *output, *bucket;
+	int count = 0, i, j, k = 0, m = 0;
+	int *output;
 	int digit = 1;
 	int max_element;
 
 	if (array == NULL || size < 2)
 		return;
-	max_element = get_max(array, size);
-	bucket = malloc(sizeof(int) * size);
-	if (!bucket)
-		return;
-	output = malloc(sizeof(int) * size);
+	output = malloc((sizeof(int) * size));
 	if (!output)
-	{
-		free(bucket);
 		return;
-	}
-	while (max_element / digit)
+	max_element = get_max(array, size);
+	while (max_element >= 1)
 	{
-		/* initialize all elements of bucket array with 0 */
-		for (i = 0; i < 10; i++)
-			bucket[i] = 0;
-		/* Count the elements */
-		for (i = 0; i < size; i++)
-			bucket[(array[i] / digit) % 10]++;
-		/* Calculate the cumulative sum of counts */
-		for (i = 1; i < size; i++)
-			bucket[i] += bucket[i - 1];
-		/* Place the elements in a sorted order */
-		for (i = size - 1; i < size; i--)
-			output[--bucket[(array[i] / digit) % 10]] = array[i];
-		/* copy the output */
-		for (i = 0; i < size; i++)
+		max_element = max_element / 10;
+		count += 1;
+	}
+	for (j = 0; j < count; j++)
+	{
+		while (m < (int)size)
+		{
+			for (i = 0; i < (int)size; i++)
+			{
+				if ((array[i] / digit) % 10  == k)
+				{
+					output[m] = array[i];
+					m++;
+				}
+			}
+			k++;
+		}
+		for (i = 0; i < (int) size; i++)
 			array[i] = output[i];
 		print_array(array, size);
-		digit *= 10;
+		k = 0;
+		m = 0;
+		digit = digit * 10;
 	}
 	free(output);
-	free(bucket);
 }
