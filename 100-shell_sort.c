@@ -30,6 +30,7 @@ void shell_sort(int *array, size_t size)
 		 */
 		for (i = gap; i < size; i++)
 		{
+			printf("gap: %lu\n", gap);
 			/**
 			 * add a[i] to the elements that have been gap sorted
 			 * save a[i] in temp and make a hole at position i
@@ -45,6 +46,7 @@ void shell_sort(int *array, size_t size)
 			  * put temp (the original a[i]) in its correct location
 			  */
 			array[j] = temp;
+			print_array(array, size);
 		}
 		print_array(array, size);
 	}

@@ -26,6 +26,9 @@ int partition(int *array, int lo, int hi, size_t size)
 		do {
 			j -= 1;
 		} while (array[j] > pivot);
+
+		printf("pivot: %d, i: %d, a[i]: %d, j: %d, a[j]: %d\n", pivot, i, array[i], j, array[j]);
+
 		if (i >= j)
 			return (i);
 

@@ -101,7 +101,8 @@ void heap_sort(int *array, size_t size)
 
 	end = size - 1; /* max heap order */
 	heapify(array, size);
-
+	printf("after heapify\n");
+	print_array(array, size);
 	while (end)
 	{
 		/**
