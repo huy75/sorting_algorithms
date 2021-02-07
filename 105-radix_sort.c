@@ -31,18 +31,27 @@ void radix_sort(int *array, size_t size)
 {
 
 	size_t i;
-	int *output;
+	int *output, *bucket;
 	int digit = 1;
 	int max_element = get_max(array, size);
-	int bucket[10];
+
+	if (!array || size < 2)
+		return;
+
+	bucket = malloc(sizeof(int) * 11);
+	if (!bucket)
+		return;
 
 	while (max_element / digit > 0)
 	{
 		/* initialize the output array */
 		output = malloc(sizeof(int) * size);
 		if (!output)
+		{
+			free(bucket);
 			return;
-		/* initlaize all elements of bucket array with 0 */
+		}
+		/* initialize all elements of bucket array with 0 */
 		for (i = 0; i < 10; i++)
 			bucket[i] = 0;
 		/* Count the elements */
@@ -60,6 +69,7 @@ void radix_sort(int *array, size_t size)
 		print_array(array, size);
 
 		digit *= 10;
-		free(output);
 	}
+	free(bucket);
+	free(output);
 }
